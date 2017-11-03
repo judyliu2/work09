@@ -12,16 +12,20 @@ int file_size(char *, struct stat *);
 void print_size(off_t);
 
 int main(){
+  /*
   printf("Statistics for directory: anything\n");
   list_files("anything");
   printf("\n");
+  */
   
   printf("Statistics for current directory\n");
   list_files("./");
   printf("\n");
   
+  /*
   printf("Testing statistics for invalid directory\n");
   list_files("test");
+  */
 
   return 0;
 }
@@ -41,10 +45,10 @@ void list_files(char *d){
       } else {
 	stat(entry->d_name, &file);
 	dir_size += file.st_size;
-	printf("Reg file: %s\n", entry->d_name);	
+	printf("Reg file: %s\n", entry->d_name);
       }
     }
-
+    
     print_size(dir_size);
     closedir(dirx);
   } else {
@@ -62,8 +66,9 @@ void print_size(off_t size){
     count++;
   }  
 
-  if((remainder / 100) >= 5)
+  if((remainder / 100) >= 5){
     size++;
+  }
 
   printf("Total directory size: %d%s\n", (int) size, units[count]);
 }

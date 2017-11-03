@@ -22,6 +22,8 @@ int main(){
   
   printf("Testing statistics for invalid directory\n");
   list_files("test");
+
+  return 0;
 }
 
 void list_files(char *d){  
